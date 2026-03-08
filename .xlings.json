@@ -1,0 +1,10 @@
+{
+  "workspace": {
+    "d2x": "0.1.4",
+    "xmake": "3.0.7",
+    "mdbook": "0.4.43",
+    "code": "",
+    "gcc": { "linux": "15.1.0" },
+    "mingw-w64": { "windows": "13.0.0" }
+  }
+}
