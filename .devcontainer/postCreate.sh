@@ -10,3 +10,9 @@ if ! command -v xlings >/dev/null 2>&1; then
 fi
 
 echo "xlings installed"
+
+echo "Installing dependencies (d2x) by xlings..."
+
+xlings install --verbose
+
+echo "Dependencies installed"
