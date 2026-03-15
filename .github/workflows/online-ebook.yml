@@ -40,17 +40,23 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: Install mdBook by Xlings
+
+      - name: Install Xlings
+        env:
+          XLINGS_NON_INTERACTIVE: 1
         run: |
           curl -fsSL https://d2learn.org/xlings-install.sh | bash
-          export PATH=/home/xlings/.xlings_data/bin:$PATH
-          xlings install mdbook@${MDBOOK_VERSION} --global -y
+          echo "PATH=$HOME/.xlings/subos/current/bin:$PATH" >> "$GITHUB_ENV"
+
+      - name: Install mdBook
+        run: xlings install mdbook@${MDBOOK_VERSION} -y
+
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v4
+
       - name: Build with mdBook
         run: |
-          export PATH=/home/xlings/.xlings_data/bin:$PATH
           ./build.sh
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
